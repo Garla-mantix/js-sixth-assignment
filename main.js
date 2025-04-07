@@ -102,7 +102,7 @@ function listUnread() {
             found = true;
         }
     } 
-    if (found = false) {
+    if (found == false) {
         alert("You have read all books in the library!")
     }
 }
