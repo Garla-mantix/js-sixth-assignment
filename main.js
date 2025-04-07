@@ -55,10 +55,11 @@ function addBook() {
     } while (isReadInput !== 'y' && isReadInput !== 'n')
     new_book.isRead = isReadInput === 'y';
     library.push(new_book);
-    console.log(library);
+    alert(`${new_book.title} has been added!`);
 } 
 
 function listBooks() {
+    console.log("All books in library:")
     for (let i = 0; i < library.length; i++) {
         console.log(library[i].title)
     }   
@@ -84,6 +85,7 @@ function removeBook() {
     let remove = prompt("Enter the title of the book you want to remove from the library: ");
     for (let i = 0; i < library.length; i++) {
         if (remove.toLowerCase() == library[i].title.toLowerCase()) {
+            alert(`${library[i].title} has been removed!`);
             library.splice(i, 1);
             found = true;
             break;
@@ -96,6 +98,7 @@ function removeBook() {
 
 function listUnread() {
     let found = false;
+    console.log("Unread books in library:")
     for (let i = 0; i < library.length; i++) {
         if (library[i].isRead == false) {
             console.log(library[i].title)
