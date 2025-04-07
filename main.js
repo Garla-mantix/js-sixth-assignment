@@ -2,20 +2,26 @@ let running = true
 
 function booktracker() {
     while (running) {
-        const choice = prompt("Welcome to Booktracker!\n 1) Add book. 2) List books. 3) Mark book as read. 4) Exit.\n Enter your choice: ");
-    
+        const choice = prompt("Welcome to Booktracker!\n 1) Add book. 2) Remove book. 3) List all books.\n 4) List only unread books. 5) Mark book as read. 6) Exit.\n Enter your choice: ");
+
         switch (choice) {
             case "1":
                 addBook();
                 break;
             case "2":
-                listBooks();
+                removeBook();
                 break;
             case "3":
-                const title = prompt("Enter the title of the book to mark as read: ")
-                markAsRead(title);
+                listBooks();
                 break;
             case "4":
+                listUnread();
+                break;
+            case "5":
+                const title = prompt("Enter the title of the book you want to mark as read: ");
+                markAsRead(title);
+                break;
+            case "6":
                 running = false;
                 alert("Goodbye!")
                 break;
@@ -41,16 +47,53 @@ function addBook() {
 } 
 
 function listBooks() {
-    for ( let i = 0; i < library.length; i++)
+    for (let i = 0; i < library.length; i++) {
         console.log(library[i].title)
+    }   
 }
 
-function markAsRead() {
-    
+function markAsRead(title) {
+    let found = false;
+    for (let i = 0; i < library.length; i++) {
+        if (title.toLowerCase() == library[i].title.toLocaleLowerCase()) {
+            library[i].isRead = true
+            alert(`${library[i].title} has been marked as read!`);
+            found = true;
+            break;
+        }
+    }
+    if (found == false) {
+        alert("No book with that name was found in the library.")
+    }
 }
 
+function removeBook() {
+    let found = false;
+    let remove = prompt("Enter the title of the book you want to remove from the library: ");
+    for (let i = 0; i < library.length; i++) {
+        if (remove.toLowerCase() == library[i].title.toLowerCase()) {
+            library.splice(i, 1);
+            found = true;
+            break;
+        }
+    }
+    if (found == false) {
+        alert("No book with that name was found in the library.")
+    }
+}
 
-
+function listUnread() {
+    let found = false;
+    for (let i = 0; i < library.length; i++) {
+        if (library[i].isRead == false) {
+            console.log(library[i].title)
+            found = true;
+        }
+    } 
+    if (found = false) {
+        alert("You have read all books in the library!")
+    }
+}
 
 const book1 = {
     title: "Don Quijote",
@@ -75,13 +118,4 @@ const book4 = {
 
 const library = [book1, book2, book3, book4]
 
-
-
 booktracker();
-
-
-
-
-// -----------------------------  Show list of unread books
-// let toRead = library.filter(isRead == false);
-// console.log(toRead);
