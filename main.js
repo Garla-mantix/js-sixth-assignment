@@ -61,7 +61,7 @@ function addBook() {
 function listBooks() {
     console.log("All books in library:")
     for (let i = 0; i < library.length; i++) {
-        console.log(library[i].title)
+        console.log(`${library[i].title} by ${library[i].author}`)
     }   
 }
 
@@ -101,7 +101,7 @@ function listUnread() {
     console.log("Unread books in library:")
     for (let i = 0; i < library.length; i++) {
         if (library[i].isRead == false) {
-            console.log(library[i].title)
+            console.log(`${library[i].title} by ${library[i].author}`)
             found = true;
         }
     } 
