@@ -135,8 +135,8 @@ const library = [book1, book2, book3, book4]
 
 booktracker();
 
-// --------------------- Could I have made the library cleaner by doing something similar to this?
-// If yes, how would i refer to the books?
+// --------------------- I feel I could have made the library cleaner by doing something similar to this...
+// But I was uncertain of how I would refer to the books inside the functions. library.books.title ?
 // const library = {
 //     books: [
 //         {title: "Don Quijote", author: "Miguel Cervantes", isRead: true},
@@ -144,4 +144,8 @@ booktracker();
 //         {title:"The Hitchhiker's Guide to the Galaxy", author:"Douglas Adams", isRead: false},
 //         {title: "Ulysses", author: "James Joyce", isRead: false}
 //     ]
+// 
+//     addBooks() {
+//     ...
+ //    }
 // }
