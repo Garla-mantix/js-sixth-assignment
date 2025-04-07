@@ -2,7 +2,7 @@ let running = true
 
 function booktracker() {
     while (running) {
-        const choice = prompt("Welcome to Booktracker!\n 1) Add book. 2) Remove book. 3) List all books.\n 4) List only unread books. 5) Mark book as read. 6) Exit.\n Enter your choice: ");
+        const choice = prompt("Welcome to Booktracker!\n\n 1) Add book. 2) Remove book.\n 3) List all books. 4) List only unread books.\n 5) Mark book as read. 6) Exit.\n\n Enter your choice: ");
 
         switch (choice) {
             case "1":
@@ -33,8 +33,20 @@ function booktracker() {
 
 function addBook() {
     const new_book = {};
-    new_book.title = prompt("Enter title of the new book: ");
-    new_book.author = prompt("Enter the author's name: ");
+    do {
+        new_book.title = prompt("Enter title of the new book: ");
+        if (new_book.title == "") {
+            alert("You need to enter a title.")
+        }
+    } while (new_book.title == "")
+    
+    do {
+        new_book.author = prompt("Enter the author's name: ");
+        if (new_book.author == "") {
+            alert("You need to enter the author's name.")
+        }
+    } while (new_book.author == "")
+    
     let isReadInput;
     do {
         isReadInput = prompt("Have you read this book yet? y/n").toLowerCase();
